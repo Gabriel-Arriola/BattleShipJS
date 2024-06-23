@@ -1,0 +1,29 @@
+services:
+  battleship-mysql:
+    image: mysql:8.0.33
+    restart: always
+    container_name: "battleship-js"
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=battleship
+      - MYSQL_DATABASE=battleship
+      - MYSQL_USER=battle
+      - MYSQL_PASSWORD=BattleShipJs
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp --interactive_timeout=200 --max_connections=300
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test:
+        - CMD
+        - mysql
+        - "-e"
+        - SHOW DATABASES;
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      
+volumes:
+  db:
+    driver: local
+
