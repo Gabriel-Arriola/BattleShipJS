@@ -11,6 +11,17 @@ exports.createGame = async (req, res) => {
   }
 };
 
+exports.placeRandomShip = async (req, res) =>{
+  try {
+    const {idPartida} = req.body;
+    const result = await GameService.placeRandomShip(req.user.id, idPartida);
+    res.json(result);
+  } catch (error) {
+    console.error('Error en createGame:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+}
+
 exports.placeShip = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -18,10 +29,13 @@ exports.placeShip = async (req, res) => {
   }
 
   const { idPartida, tamaño, fila, columna, horizontal, modelo } = req.body;
+
   try {
     const result = await GameService.placeShip(req.user.id, idPartida, tamaño, fila, columna, horizontal, modelo);
     res.json(result);
   } catch (error) {
+    console.log("error ", error);
+
     if (error.message === 'Partida no encontrada' || error.message === 'No se puede colocar el barco en esa posición') {
       res.status(400).json({ error: error.message });
     } else {

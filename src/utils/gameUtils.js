@@ -28,11 +28,14 @@ class GameUtils {
         }
       }
     });
-
     return board;
   }
 
   static canPlaceShip(board, row, col, size, horizontal) {
+    row = parseInt(row);
+    col = parseInt(col);
+    size = parseInt(size);
+
     if (horizontal) {
       if (col + size > BOARD_SIZE) return false;
       for (let i = 0; i < size; i++) {
@@ -46,6 +49,26 @@ class GameUtils {
     }
     return true;
   }
+
+  static getPlacementError(board, row, col, size, horizontal) {
+    row = parseInt(row);
+    col = parseInt(col);
+    size = parseInt(size);
+
+    if (horizontal) {
+      if (col + size > BOARD_SIZE) return `El barco se sale del tablero horizontalmente (col: ${col}, size: ${size})`;
+      for (let i = 0; i < size; i++) {
+        if (board[row][col + i] !== 0) return `Hay un barco en la posición (${row}, ${col + i})`;
+      }
+    } else {
+      if (row + size > BOARD_SIZE) return `El barco se sale del tablero verticalmente (row: ${row}, size: ${size})`;
+      for (let i = 0; i < size; i++) {
+        if (board[row + i][col] !== 0) return `Hay un barco en la posición (${row + i}, ${col})`;
+      }
+    }
+    return 'No se encontró ningún error, el barco debería poder colocarse';
+  }
+
 
   static placeShip(board, row, col, size, horizontal, mod) {
     if (horizontal) {
@@ -77,7 +100,11 @@ class GameUtils {
   }
 
   static countRemainingShips(board) {
-    return board.flat().filter(cell => cell === 1).length;
+    return board.flat().filter(cell => typeof cell === 'string' && cell !== '').length;
+  }
+
+  static checkForAnyShots(board) {
+    return board.flat().some(cell => cell === 2 || cell === 3);
   }
 
   static formatBoard(board) {

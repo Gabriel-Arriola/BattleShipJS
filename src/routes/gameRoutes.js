@@ -4,6 +4,7 @@ const gameController = require('../controllers/gameController');
 const authenticateToken = require('../middleware/auth');
 
 router.post('/crear-partida', authenticateToken, gameController.createGame);
+router.post('/colocar-barco-random', authenticateToken, gameController.placeRandomShip);
 router.post('/colocar-barco', authenticateToken, gameController.placeShip);
 router.get('/tablero-jugador/:idPartida', authenticateToken, gameController.getPlayerBoard);
 router.get('/tablero-maquina/:idPartida', authenticateToken, gameController.getMachineBoard);
