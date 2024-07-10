@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "1a78f8ec-33a1-4525-8bfd-a45566718ab7",
+		"name": "CapbaraWars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27016765"
+	},
+	"item": [
+		{
+			"name": "user endpoint",
+			"item": [
+				{
+					"name": "registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"gabriel\",\n    \"email\": \"test@test.com\",\n    \"contraseña\": \"abc123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/user/registro"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"contraseña\": \"abc123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/user/login"
+					},
+					"response": []
+				}
+			],
+			"description": "Aqui estan los endpoints reltivos a la gestion de los usuarios"
+		},
+		{
+			"name": "crear-partida",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/crear-partida"
+			},
+			"response": []
+		},
+		{
+			"name": "colocar-barco-random",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPartida\":\"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/colocar-barco-random"
+			},
+			"response": []
+		},
+		{
+			"name": "colocar-barco",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPartida\": \"2\",\n    \"tamaño\": \"3\",\n    \"fila\": \"0\",\n    \"columna\": \"0\",\n    \"horizontal\": true,\n    \"modelo\": \"A\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/colocar-barco"
+			},
+			"response": []
+		},
+		{
+			"name": "tablero-jugador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/game/tablero-jugador/2"
+			},
+			"response": []
+		},
+		{
+			"name": "tablero-maquina",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/game/tablero-maquina/2"
+			},
+			"response": []
+		},
+		{
+			"name": "estado-partida",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/game/estado-partida/2"
+			},
+			"response": []
+		},
+		{
+			"name": "turno-maquina",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPartida\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/turno-maquina"
+			},
+			"response": []
+		},
+		{
+			"name": "disparar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPartida\": \"2\",\n    \"fila\": \"3\",\n    \"columna\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/disparar"
+			},
+			"response": []
+		},
+		{
+			"name": "reiniciar-partida",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzIwNjM4Nzk4LCJleHAiOjE3MjA2NDIzOTh9.-x3DnkTbcdjeXVqXecKzIz-y8EdzpT62arMcHnbhNMo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPartida\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/game/reiniciar-partida"
+			},
+			"response": []
+		}
+	]
+}
